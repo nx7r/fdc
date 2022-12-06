@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from . import forms, decorators
 
-# Create your views here.
+
 @decorators.unauthenticated
 def loginPage(request):
 	if request.method == 'POST':
