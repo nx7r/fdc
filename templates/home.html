@@ -1,0 +1,484 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+    {% load static %}
+    
+    <main data-barba="container" data-barba-namespace="default">
+        <style>
+          #main_message {
+            background-color: var(--dark-color);
+            position: relative;
+          }
+        
+          #main_message .container {
+            overflow: initial;
+          }
+        
+          .full-graphic {
+            padding-bottom: 0px;
+          }
+        
+          .full-graphic > img {
+            width: auto;
+            max-width: 50vw;
+            height: 100%;
+          }
+        
+          .main-download {
+            margin-top: 48px;
+          }
+        
+          .main-download .btn.download {
+            margin-top: 0;
+          }
+        
+          #donations {
+            background-color: var(--dark-color);
+            color: var(--dark-color-text);
+            overflow: auto;
+            text-align: center;
+          }
+        
+          #donations h1, #donations h2, #donations h3 {
+            color: var(--dark-color-text-title);
+          }
+        
+          #sponsors .flex {
+            justify-content: center;
+            flex-wrap: wrap;
+          }
+        
+          #sponsors .sponsor {
+            background-color: var(--sponsor-background-color);
+            border: 14px solid var(--sponsor-background-color);
+            border-radius: 8px 8px;
+            display: flex;
+            align-items: center;
+            height: 80px;
+            box-sizing: border-box;
+            margin-bottom: 8px;
+            margin-left: 8px;
+            overflow: auto;
+            opacity: 0.85;
+            transition: opacity 0.2s;
+          }
+        
+          #sponsors .sponsor:hover {
+            filter: brightness(105%);
+            opacity: 1.0;
+          }
+        
+          #sponsors img {
+            mix-blend-mode: multiply;
+            width: inherit;
+            height: 100%;
+          }
+        
+          #sponsors .silver .sponsor {
+            background-color: var(--sponsor-silver-background-color);
+            border-color: var(--sponsor-silver-background-color);
+            height: 68px;
+          }
+        
+          #sponsors .gold .sponsor {
+            background-color: var(--sponsor-gold-background-color);
+            border-color: var(--sponsor-gold-background-color);
+          }
+        
+          #sponsors .platinum .sponsor {
+            background-color: var(--sponsor-platinum-background-color);
+            border-color: var(--sponsor-platinum-background-color);
+            height: 100px;
+          }
+        
+          .feature, #highlight {
+            position: relative;
+          }
+        
+          #highlight {
+            background-size: cover;
+            background-position: center;
+            background-color: var(--base-color);
+            border-radius: 4px 0 0 4px;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+          }
+        
+          #highlight .highlight-cover {
+            border-radius: 4px 0 0 0;
+            background-position: center;
+            background-size: cover;
+            height: 100%;
+            min-height: 250px;
+          }
+        
+          #highlight .highlight-details {
+            border-radius: 0 0 0 4px;
+          }
+        
+          #highlight .highlight-title {
+            text-decoration: underline;
+            text-decoration-color: var(--link-underline-color);
+            text-decoration-thickness: 0.125rem;
+          }
+        
+          #news .news-list {
+            padding: 0 20px;
+          }
+        
+          #news .news-shortitem {
+            color: var(--base-color-text);
+            padding: 2px 2px;
+          }
+        
+          #news .news-shortitem:hover {
+            color: var(--base-color-text-hl);
+          }
+        
+          .feature-link {
+            text-decoration: none;
+          }
+        
+          .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+          }
+        
+          .feature:hover {
+            transform: translateY(-2px);
+          }
+        
+          .features-row > :first-child, .split-row > :first-child {
+            margin-right: 8px;
+          }
+        
+          .features-row > :last-child, .split-row > :last-child {
+            margin-left: 8px;
+          }
+        
+          .feature img {
+            display: block;
+            width: 100%;
+            height: auto;
+            position: relative;
+            background-color: #607080;
+            aspect-ratio: 3/2;
+            object-fit: cover;
+            object-position: top center;
+          }
+        
+          .feature {
+            overflow: hidden;
+            transition: transform 200ms ease-in-out;
+            height: 100%;
+            border-radius: 8px;
+          }
+        
+          .feature.dark {
+            background-color: var(--transparent-cover-darker);
+          }
+        
+          .feature h4 {
+            margin-bottom: 10px;
+          }
+        
+          .feature p {
+            margin: 0;
+          }
+        
+          .feature .body {
+            padding: 24px;
+          }
+        
+          .feature .dark h4 {
+            color: var(--dark-color-text-title);
+          }
+        
+          .img-auto-size {
+            width: 100%;
+            height: auto;
+          }
+        
+          @media (max-width: 900px) {
+            .main-download {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-wrap: wrap;
+            }
+        
+            .features-grid {
+              grid-template-columns: 1fr;
+            }
+        
+            #highlight .highlight-cover {
+              border-radius: 4px 4px 0 0;
+            }
+        
+            #highlight .highlight-details {
+              border-radius: 0;
+            }
+          }
+        </style>
+        
+        <div style="background: linear-gradient(90deg, #6a515c 2%, #4d253c 14%, #5d4753 31%, #6c4448 53%, #3b2847 86%, #3c2848 93%)">
+          <div class="main-image" style="position: relative">
+            <div class="main-image-text">
+              <a href="https://kivano.games/"><i>TailQuest: Defense</i> by Kivano Games</a>
+            </div>
+          </div>
+        </div>
+        
+        <section id="main_message" class="dark">
+          <div class="container flex eqsize responsive">
+        
+            <div class="padded">
+              <h2>The game engine you've been waiting&nbsp;for.</h2>
+              <p>
+                Godot provides a huge set of common tools, so you can just focus on
+                making your game without reinventing the wheel.
+              </p>
+              <p>
+                Godot is completely free and open-source under the very permissive MIT license.
+                No strings attached, no royalties, nothing.
+                Your game is yours, down to the last line of engine code.
+              </p>
+        
+              <div class="main-download">
+                <a href="https://godotengine.org/download" class="btn download">
+                  <div class="main">Download</div><div class="opt">3.5.1</div>
+                </a>
+                <a href="https://godotengine.org/features" class="btn flat btn-white-text">Learn more</a>
+              </div>
+            </div>
+        
+            <div class="base-padding full-graphic text-right">
+              <img src="./Godot Engine - Free and open source 2D and 3D game engine_files/graphic.svg" width="460" height="441" alt="">
+            </div>
+        
+          </div>
+        </section>
+        
+        <section id="news_and_highlights" class="container padded">
+          <div class="flex eqsize responsive card" style="border-radius: 4px;">
+        
+            <a id="highlight" href="https://godotengine.org/article/dev-snapshot-godot-4-0-beta-5">
+              <div class="highlight-cover" style="background-image: url(https://godotengine.org/storage/app/uploads/public/637/517/5b5/6375175b5be6f234103652.jpg);" title="Object Wars" alt="Object Wars A game by Vedg Studio / NoirosL"></div>
+              <div class="highlight-details dark base-padding">
+                <h4 class="highlight-title no-margin">Dev snapshot: Godot 4.0 beta 5</h4>
+                <p class="highlight-summary hide-on-mobile">Another beta release on the way to Godot 4.0, with a lot of interesting changes! Undo/redo history dock, many GDScript bugs fixed with inner classes, SVG support in OpenType fonts, a lot of rendering...</p>
+              </div>
+            </a>
+        
+            <div id="news">
+              <h3 class="base-padding no-margin-bottom" style="text-align: center;">News</h3>
+              <div class="news-list">
+                                                <a class="news-shortitem" href="https://godotengine.org/article/movie-maker-mode-arrives-in-godot-4">
+                  <strong>· Movie Maker mode arrives in Godot 4.0</strong>
+                </a>
+                <hr>
+                                        <a class="news-shortitem" href="https://godotengine.org/article/animation-retargeting-in-godot-4-0">
+                  <strong>· Animation Retargeting in Godot 4.0</strong>
+                </a>
+                <hr>
+                                        <a class="news-shortitem" href="https://godotengine.org/article/dev-snapshot-godot-4-0-beta-4">
+                  <strong>· Dev snapshot: Godot 4.0 beta 4</strong>
+                </a>
+                <hr>
+                                        <a class="news-shortitem" href="https://godotengine.org/article/godots-graduation-godot-moves-to-a-new-foundation">
+                  <strong>· Godot’s Graduation: Godot moves to a new Foundation</strong>
+                </a>
+                <hr>
+                                        <a class="news-shortitem" href="https://godotengine.org/article/emulating-double-precision-gpu-render-large-worlds">
+                  <strong>· Emulating Double Precision on the GPU to Render Large Worlds</strong>
+                </a>
+                <hr>
+                                        <a class="news-shortitem" href="https://godotengine.org/article/dev-snapshot-godot-4-0-beta-3">
+                  <strong>· Dev snapshot: Godot 4.0 beta 3</strong>
+                </a>
+                <hr>
+                              </div>
+              <div class="base-padding" style="text-align: right;">
+                <a href="https://godotengine.org/news/default/1" class="btn flat no-margin">More</a>
+              </div>
+            </div>
+        
+          </div>
+        </section>
+        
+        <section id="features" class="container padded">
+          <h2>A different way to make games</h2>
+        
+          <div class="features-grid">
+            <a class="feature-link" href="https://godotengine.org/features#design" data-barba-prevent="">
+              <div class="feature dark">
+                <img src="./Godot Engine - Free and open source 2D and 3D game engine_files/innovative.webp" alt="" width="1" height="1" style="background: linear-gradient(90deg, #333747 11%, #2d3342 50%, #2d3342 68%, #272d3c 87%)" loading="lazy">
+                <div class="body">
+                  <h4>Innovative design</h4>
+                  <p>
+                    Godot's Node and Scene system gives you both power and flexibility
+                    to create anything.
+                  </p>
+                </div>
+              </div>
+            </a>
+        
+            <a class="feature-link" href="https://godotengine.org/features#script" data-barba-prevent="">
+              <div class="feature dark">
+                <img src="./Godot Engine - Free and open source 2D and 3D game engine_files/language.webp" alt="" width="1" height="1" style="background: linear-gradient(90deg, #252a35 46%, #252a35 53%, #202630 76%, #202630 89%)" loading="lazy">
+                <div class="body">
+                  <h4>Use the right language for the job</h4>
+                  <p>
+                    Keep your code modular with an object-oriented API using Godot's own
+                    GDScript, C#, C++, or bring your own using GDNative.
+                  </p>
+                </div>
+              </div>
+            </a>
+            <a class="feature-link" href="https://godotengine.org/features#features_2d" data-barba-prevent="">
+              <div class="feature dark">
+                <img src="./Godot Engine - Free and open source 2D and 3D game engine_files/2d.webp" alt="" width="1" height="1" style="background: linear-gradient(90deg, #196f36 7%, #28674e 29%, #2a4b46 65%, #3b6f4e 97%)" loading="lazy">
+                <div class="body">
+                  <h4>Dedicated 2D engine</h4>
+                  <p>
+                    Make crisp and performant 2D games with Godot's dedicated 2D
+                    rendering engine with real 2D pixel coordinates and 2D nodes.
+                  </p>
+                </div>
+              </div>
+            </a>
+        
+            <a class="feature-link" href="https://godotengine.org/features#features_3d" data-barba-prevent="">
+              <div class="feature dark">
+                <img src="./Godot Engine - Free and open source 2D and 3D game engine_files/3d.webp" alt="" width="1" height="1" style="background: linear-gradient(90deg, #196f36 7%, #28674e 29%, #2a4b46 65%, #3b6f4e 97%)" loading="lazy">
+                <div class="body">
+                  <h4>Simple and powerful 3D</h4>
+                  <p>
+                    Godot's 3D nodes give you everything you need to build, animate,
+                    and render your 3D worlds and characters.
+                  </p>
+                </div>
+              </div>
+            </a>
+        
+            <a class="feature-link" href="https://godotengine.org/features#deploy" data-barba-prevent="">
+              <div class="feature dark">
+                <img src="./Godot Engine - Free and open source 2D and 3D game engine_files/cross-platform.svg" alt="" width="1" height="1" style="background-color: #333667" loading="lazy">
+                <div class="body">
+                  <h4>Release on all platforms</h4>
+                  <p>
+                    Deploy your game on desktop, mobile, and the web in seconds. Godot
+                    even supports consoles through third party publishers.
+                  </p>
+                </div>
+              </div>
+            </a>
+        
+            <a class="feature-link" href="https://godotengine.org/#get_involved" data-barba-prevent="">
+              <div class="feature dark">
+                <img src="./Godot Engine - Free and open source 2D and 3D game engine_files/oss.svg" alt="" width="1" height="1" style="background-color: #333667" loading="lazy">
+                <div class="body">
+                  <h4>Open Source</h4>
+                  <p>
+                    Truly open development: anyone who contributes to Godot benefits
+                    equally from others’ contributions.
+                  </p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </section>
+        
+        <section id="get_involved" class="container padded">
+          <h2>Get involved</h2>
+          <p>
+            Join the community and help create a game engine that belongs to everybody.
+          </p>
+        
+          <div class="flex eqsize responsive">
+        
+            <div class="text-center base-padding">
+              <img src="./Godot Engine - Free and open source 2D and 3D game engine_files/code.svg" alt="" width="250" height="250" loading="lazy">
+              <h4>Code</h4>
+              <p>
+                If you know how to code, you can help by fixing bugs and working with engine contributors towards the implementation of new features.
+              </p>
+              <a href="https://docs.godotengine.org/en/stable/community/contributing/ways_to_contribute.html#contributing-code" class="btn flat" target="_blank" rel="noopener">Learn more</a>
+            </div>
+        
+            <div class="text-center base-padding">
+              <img src="./Godot Engine - Free and open source 2D and 3D game engine_files/document.svg" alt="" width="250" height="250" loading="lazy">
+              <h4>Document</h4>
+              <p>
+                Documentation quality is essential in a game engine; help make it better by updating the API reference, writing new guides or submitting corrections.
+              </p>
+              <a href="https://docs.godotengine.org/en/stable/community/contributing/ways_to_contribute.html#contributing-to-the-documentation" class="btn flat" target="_blank" rel="noopener">Learn more</a>
+            </div>
+        
+            <div class="text-center base-padding">
+              <img src="./Godot Engine - Free and open source 2D and 3D game engine_files/report.svg" alt="" width="250" height="250" loading="lazy">
+              <h4>Report</h4>
+              <p>
+                Found a problem with the engine? Don't forget to report it so that developers can track it down.
+              </p>
+              <a href="https://docs.godotengine.org/en/stable/community/contributing/ways_to_contribute.html#testing-and-reporting-issues" class="btn flat" target="_blank" rel="noopener">Learn more</a>
+            </div>
+        
+          </div>
+        </section>
+        
+        <section id="donations" class="padded">
+          <div class="container sm-full">
+            <img id="sfc_graphic" src="./Godot Engine - Free and open source 2D and 3D game engine_files/sfc.svg" alt="Software Freedom Conservancy logo" width="1" height="1" class="img-auto-size" loading="lazy">
+            <h3 class="text-center">Donate</h3>
+            <p class="small auto-margin">
+              You don't need to be an engine developer to help Godot. Consider donating to speed up development and make Godot&nbsp;Engine even more awesome!
+            </p>
+        
+            <a href="https://godotengine.org/donate" class="btn flat btn-white-text">Learn more</a>
+          </div>
+        </section>
+        
+        <section id="sponsors">
+          <div class="container sm-full padded">
+            <h2 class="text-center">Sponsored by</h2>
+        
+            <div class="platinum flex">
+              <a class="sponsor card" href="https://www.gamblify.com/" target="_blank" rel="noopener">
+                <img src="./Godot Engine - Free and open source 2D and 3D game engine_files/gamblify.png" width="312" height="66" alt="Gamblify" loading="lazy">
+              </a>
+              <a class="sponsor card" href="http://spiffcode.com/" target="_blank" rel="noopener">
+                <img src="./Godot Engine - Free and open source 2D and 3D game engine_files/spiffcode.png" width="291" height="66" alt="Spiffcode" loading="lazy">
+              </a>
+            </div>
+            <div class="gold flex">
+              <a class="sponsor card" href="https://scp.games/pandemic/" target="_blank" rel="noopener">
+                <img src="./Godot Engine - Free and open source 2D and 3D game engine_files/affray-interactive.png" width="220" height="66" alt="Affray Interactive" loading="lazy">
+              </a>
+              <a class="sponsor card" href="https://www.asifa-hollywood.org/" target="_blank" rel="noopener">
+                <img src="./Godot Engine - Free and open source 2D and 3D game engine_files/asifa-hollywood.png" width="223" height="68" alt="ASIFA-Hollywood" loading="lazy">
+              </a>
+              <a class="sponsor card" href="https://playfulstudios.com/" target="_blank" rel="noopener">
+                <img src="./Godot Engine - Free and open source 2D and 3D game engine_files/playful-studios.png" width="196" height="80" alt="Playful Studios" loading="lazy">
+              </a>
+              <a class="sponsor card" href="http://robotgentleman.com/" target="_blank" rel="noopener">
+                <img src="./Godot Engine - Free and open source 2D and 3D game engine_files/robot-gentleman.png" width="120" height="103" alt="Robot Gentleman" loading="lazy">
+              </a>
+            </div>
+            <div class="silver flex">
+              <a class="sponsor card" href="https://developers.join-striked.com/home" target="_blank" rel="noopener">
+                <img src="./Godot Engine - Free and open source 2D and 3D game engine_files/striked.png" width="171" height="40" alt="Striked" loading="lazy">
+              </a>
+            </div>
+          </div>
+        </section>
+        
+        
+        </main>
+
+{% endblock content %}

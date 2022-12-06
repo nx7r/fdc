@@ -1,0 +1,34 @@
+{% load static %}
+
+<header>
+    <div class="container flex align-center">
+      <input type="checkbox" id="nav_toggle_cb">
+      <div id="nav_head">
+        <a href="{% url 'home' %}" id="logo-link">
+          <img class="nav-logo dark-logo" src="{% static 'img/logo.jpeg' %}" width="48" height="48" alt="Godot Engine">
+        </a>
+        <label for="nav_toggle_cb" id="nav_toggle_btn">
+          <img src="{% static 'img/hamburger.svg' %}" width="24" height="24" alt="">
+        </label>
+      </div>
+  
+      <nav id="nav">
+        <ul class="left">
+            <li class="{% if page == 'home' %} active {% else %} un_active {% endif %}"><a href="{% url 'home' %}">Home</a></li>
+            <div class="only-on-mobile" style="width: 100%">
+                <li class="{% if page == 'showcase' %} active {% else %} un_active {% endif %}"><a href="#showcase">ShowCase</a></li>
+            </div>
+            <li class="{% if page == 'news' %} active {% else %} un_active {% endif %}"><a href="{% url 'news' %}">News</a></li>
+            <li class="{% if page == 'events' %} active {% else %} un_active {% endif %}"><a href="{% url 'events' %}">Events</a></li>
+            <li class="{% if page == 'about' %} active {% else %} un_active {% endif %}"><a href="#about">About</a></li>
+        </ul>
+  
+        <ul class="right">
+          <li class="{% if page == 'login' %} active {% else %} un_active {% endif %}"><a href="{% url 'accounts:login' %}">Login</a></li>
+          <li class="{% if page == 'register' %} active {% else %} un_active {% endif %}"><a href="{% url 'accounts:register' %}">Register</a></li>
+          <li class="{% if page == 'contribute' %} active {% else %} un_active {% endif %}"><a href="#contribute">Contribute</a></li>
+          <li class="fund"><a href="#donate">❤ Donate</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>

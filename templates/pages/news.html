@@ -1,0 +1,159 @@
+{% extends 'base/base.html' %}
+
+{% block title %}News{% endblock title %}
+
+{% block content %}
+
+<main data-barba="container" data-barba-namespace="default">
+    <style>
+      .news-item {
+        margin-bottom: 16px;
+      }
+    
+      .news-item .image {
+        height: inherit;
+        flex: 1;
+      }
+    
+      .news-item .content {
+        flex: 4;
+      }
+    
+      .news-item .title {
+        margin-top: 0px;
+        margin-bottom: 8px;
+        text-transform: none;
+      }
+    
+      .news-item .title a {
+        text-decoration: none;
+        color: var(--base-color-text-title);
+      }
+    
+      .news-item .content .date {
+        flex: 1;
+        text-align: right;
+      }
+    
+      .news-item .date-big {
+        line-height: .75;
+      }
+    
+      @media (max-width: 900px) {
+        .news-item .content .date {
+          text-align: left;
+        }
+      }
+    </style>
+    
+    <div class="head">
+      <div class="container flex eqsize responsive">
+        <div class="main">
+          <h1 class="intro-title">News</h1>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container">
+        <form class="search-bar" method="get" action="https://duckduckgo.com/">
+        <input type="hidden" name="sites" value="godotengine.org/article">
+        <input type="text" name="q" maxlength="300" placeholder="Search articles">
+        <button class="btn search-bar-btn" type="submit">
+          <img width="24" height="24" src="https://godotengine.org/themes/godotengine/assets/icons/search.svg" alt="search" title="search">
+        </button>
+      </form>
+    
+      <h3 style="margin-top: 1rem; margin-bottom: 4rem">Categories</h3>
+      <div class="tags">
+            <a href="/news/default/1" title="Show all categories" style="font-weight: bold"><div class="tag">All</div></a>
+              <a href="/news/news/1" title="General news that don't fit in other categories."><div class="tag">News</div></a>
+              <a href="/news/progress-report/1" title="Progress report about a specific engine subsystem in Godot."><div class="tag">Progress report</div></a>
+              <a href="/news/events/1" title="Physical and online Godot-related event announcements."><div class="tag">Events</div></a>
+              <a href="/news/release/1" title="Godot stable release announcements. See Pre-release category for alphas, betas and release candidates."><div class="tag">Release</div></a>
+              <a href="/news/pre-release/1" title="Godot pre-release announcement (alpha, beta or release candidate)."><div class="tag">Pre-release</div></a>
+              <a href="/news/showcase/1" title="Showreel video postings and showcase interviews. Showreel-related announcements are in the News category."><div class="tag">Showcase</div></a>
+          </div>
+    
+            <h3 style="margin-top: -1rem; margin-bottom: -1rem">All posts</h3>
+      
+{% comment %}      <div class="flex pagination">
+          <div class="pagination-previous pagination-disabled">← Previous</div>
+      
+          
+            <a class="active" href="https://godotengine.org/news/default/1">1
+        </a>
+          <a class="" href="https://godotengine.org/news/default/2">2
+        </a>
+          <a class="" href="https://godotengine.org/news/default/3">3
+        </a>
+          <a class="" href="https://godotengine.org/news/default/4">4
+        </a>
+          <a class="" href="https://godotengine.org/news/default/5">5
+        </a>
+      
+                      <div class="pagination-disabled">…</div>
+            <a href="https://godotengine.org/news/default/20">20</a>
+            <a href="https://godotengine.org/news/default/21">21</a>
+      
+          <a class="pagination-next" href="https://godotengine.org/news/default/2">Next →</a>
+      </div>{% endcomment %}
+            
+      
+
+{% for news_item in newa %}
+
+
+<a href="{{news_item}}" style="text-decoration: none">
+    <div class="news-item flex card responsive">
+      <div class="image" style="background-image: url('{{news_item.img}}'); background-size: cover; background-color: white" href="https://godotengine.org/article/godot-at-gdc-2023"></div>
+      <div class="content base-padding flex">
+        <div class="brief">
+          <h3 class="title">
+            {{news_item}}
+          </h3>
+          <h4 class="author">
+            {{news_item.auth}}
+            <span class="date">{{news_item.date}}</span>
+          </h4>
+          <p>{{news_item.desc}}</p>
+        </div>
+      </div>
+    </div>
+  </a>
+
+
+
+{% endfor %}
+
+
+
+
+
+{% comment %}
+
+      <div class="flex pagination">
+          <div class="pagination-previous pagination-disabled">← Previous</div>
+      
+          
+            <a class="active" href="https://godotengine.org/news/default/1">1
+        </a>
+          <a class="" href="https://godotengine.org/news/default/2">2
+        </a>
+          <a class="" href="https://godotengine.org/news/default/3">3
+        </a>
+          <a class="" href="https://godotengine.org/news/default/4">4
+        </a>
+          <a class="" href="https://godotengine.org/news/default/5">5
+        </a>
+      
+                      <div class="pagination-disabled">…</div>
+            <a href="https://godotengine.org/news/default/20">20</a>
+            <a href="https://godotengine.org/news/default/21">21</a>
+      
+          <a class="pagination-next" href="https://godotengine.org/news/default/2">Next →</a>
+      </div></div>
+    {% endcomment %}
+    
+    </main>
+
+{% endblock content %}
